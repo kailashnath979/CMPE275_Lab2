@@ -29,6 +29,19 @@ public class PlayerController {
 	@Autowired
 	SponsorRepository sponsorRepository;
 	
+	/**
+	 * @param firstname
+	 * @param lastname
+	 * @param email
+	 * @param description
+	 * @param sponsorId
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @return player object if the player is created successfully, else status type or error
+	 * Creates a new player object
+	 */
 	@PostMapping
 	public ResponseEntity createPlayer(@RequestParam String firstname, @RequestParam String lastname,
 			@RequestParam String email, @RequestParam(required = false) String description,
@@ -66,6 +79,11 @@ public class PlayerController {
 		}
 	}
 
+	/**
+	 * @param id
+	 * @return player object
+	 * Get's a player related details
+	 */
 	@GetMapping
 	public ResponseEntity getPlayer(@RequestParam long id) {
 		try {
@@ -79,6 +97,20 @@ public class PlayerController {
 		}
 	}
 
+	/**
+	 * @param id
+	 * @param firstname
+	 * @param lastname
+	 * @param email
+	 * @param description
+	 * @param sponsorId
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @return updated player details
+	 * Updates the details of already existing players, else shows player id donot exist
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity updatePlayer(@PathVariable long id, @RequestParam String firstname,
 			@RequestParam String lastname, @RequestParam String email, @RequestParam String description,
@@ -123,6 +155,11 @@ public class PlayerController {
 
 	}
 
+	/**
+	 * @param id
+	 * @return deleted player object
+	 * This method deletes an existing player from the database
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity deletePlayer(@PathVariable long id) {
 		try {

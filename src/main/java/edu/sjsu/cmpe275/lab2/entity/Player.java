@@ -17,6 +17,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+//Player java class
 @Entity
 @Table(name = "PLAYER")
 @JsonIgnoreProperties({ "hibernateLazyInitializer" })

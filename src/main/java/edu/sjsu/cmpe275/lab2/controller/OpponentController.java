@@ -21,6 +21,12 @@ public class OpponentController {
 	@Autowired
 	private PlayerRepository playerRepository;
 
+	/**
+	 * @param id1
+	 * @param id2
+	 * @return the status of addOpponent action
+	 * Given two player id's, addOpponent method adds player2 as opponent to player1 and vice-versa
+	 */
 	@PutMapping("/{id1}/{id2}")
 	public ResponseEntity<String> addOpponent(@PathVariable long id1, @PathVariable long id2) {
 
@@ -55,6 +61,12 @@ public class OpponentController {
 
 	}
 
+	/**
+	 * @param id1
+	 * @param id2
+	 * @return the status of removeOpponent action
+	 * Given two player id's, removeOpponent method removes player2 as opponent to player1 and vice-versa
+	 */
 	@DeleteMapping("/{id1}/{id2}")
 	public ResponseEntity<String> removeOpponent(@PathVariable long id1, @PathVariable long id2) {
 		try {

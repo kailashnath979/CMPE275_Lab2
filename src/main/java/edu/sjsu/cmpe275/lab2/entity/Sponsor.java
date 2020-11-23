@@ -16,6 +16,7 @@ import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+//Sponsor java class
 @Entity
 @Table(name = "SPONSOR")
 @JsonIgnoreProperties({"hibernateLazyInitializer"})

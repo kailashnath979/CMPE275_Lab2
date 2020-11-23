@@ -2,6 +2,7 @@ package edu.sjsu.cmpe275.lab2.entity;
 
 import javax.persistence.Embeddable;
 
+//Address java class
 @Embeddable
 public class Address {
 

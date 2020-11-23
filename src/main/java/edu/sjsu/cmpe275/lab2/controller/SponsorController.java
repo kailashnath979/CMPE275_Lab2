@@ -24,6 +24,17 @@ public class SponsorController {
 	@Autowired
 	SponsorRepository sponsorRepository;
 
+	/**
+	 * @param name
+	 * @param email
+	 * @param description
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @return sponsor object if the sponsor is created successfully, else status type or error
+	 * Creates a new sponsor object
+	 */
 	@PostMapping
 	public ResponseEntity createSponsor(@RequestParam String name,
 			@RequestParam(required = false) String email, @RequestParam(required = false) String description,
@@ -49,6 +60,11 @@ public class SponsorController {
 		}
 	}
 
+	/**
+	 * @param id
+	 * @return sponsor object
+	 * Get's a sponsor related details
+	 */
 	@GetMapping
 	public ResponseEntity getSponsor(@RequestParam long id) {
 		try {
@@ -62,6 +78,18 @@ public class SponsorController {
 		}
 	}
 
+	/**
+	 * @param id
+	 * @param name
+	 * @param email
+	 * @param description
+	 * @param street
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @return  updated sponsor details
+	 * Updates the details of already existing sponsors, else shows sponsor id don't exist
+	 */
 	@PutMapping("/{id}")
 	public ResponseEntity updateSponsor(@PathVariable long id, @RequestParam String name,
 			@RequestParam(required = false) String email, @RequestParam(required = false) String description,
@@ -86,6 +114,11 @@ public class SponsorController {
 		}
 	}
 
+	/**
+	 * @param id
+	 * @return deleted sponsor object
+	 * This method deletes an existing sponsor from the database
+	 */
 	@DeleteMapping("/{id}")
 	public ResponseEntity deleteSponsor(@PathVariable long id) {
 		try {
