@@ -133,6 +133,7 @@ public class PlayerController {
 			} else
 				return new ResponseEntity<>("Player with given Id doesnot exist", HttpStatus.NOT_FOUND);
 		} catch (Exception e) {
+			e.printStackTrace();
 			return new ResponseEntity<>("Bad request", HttpStatus.BAD_REQUEST);
 		}
 	}

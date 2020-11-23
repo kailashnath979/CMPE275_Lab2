@@ -2,9 +2,11 @@ package edu.sjsu.cmpe275.lab2.entity;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,13 +40,12 @@ public class Player {
 
 	@ManyToOne
 	@JoinColumn(name = "Sponsor_Id")
-//	@JsonIgnoreProperties("players")
 	private Sponsor sponsor;
 
 	@Embedded
 	private Address address;
 
-	@OneToMany
+	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 	@Column(name = "opponents")
 	@JsonIgnoreProperties({"opponents","sponsor"})
 	private List<Player> opponents;
