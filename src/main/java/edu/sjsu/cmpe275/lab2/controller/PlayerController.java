@@ -1,5 +1,7 @@
 package edu.sjsu.cmpe275.lab2.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -165,7 +167,14 @@ public class PlayerController {
 		try {
 			if (playerRepository.existsById(id)) {
 				Player player = playerRepository.getOne(id);
+				List<Player> opponents = player.getOpponents();
+				for(Player opponent:opponents) {
+					opponent.getOpponents().remove(player);
+					playerRepository.save(opponent);
+				}
+				player.setOpponents(null);
 				playerRepository.deleteById(id);
+				player.setOpponents(opponents);
 				return new ResponseEntity<>(player, HttpStatus.OK);
 			} else
 				return new ResponseEntity<>("Player with given Id doesnot exist", HttpStatus.NOT_FOUND);
